@@ -1,5 +1,3 @@
-# Embrace immutability (Programming & Infrastructure)
-
 ## Mutability 🚨
 
 If you are a programmer, and you have some experience with languages such as Java, Python and Go are likely you are aware of the **benefits and drawbacks of mutability.**
@@ -76,9 +74,16 @@ func changeAuthor(book *Book, author string) {
 }
 
 ```
+**Output**:
+Even when we updated the pages in the method, the data remain the same. 
+>1) {Author:Rich Hickey Title:Clojure for the Brave & True Pages:232}
+>2) {Author:Daniel Higginbotham Title:Clojure for the Brave & True Pages:232}
+The CLOJURE FOR THE BRAVE & TRUE book has 151 pages
+>3) {Author:Daniel Higginbotham Title:Clojure for the Brave & True Pages:232}
+
 
 ### Clojure
-- Create functions that return new values 
+- Create functions that return new values
 ```clojure
 (ns main.core
   (:require [clojure.string :as s])
@@ -104,6 +109,13 @@ func changeAuthor(book *Book, author string) {
   )
 ```
 
+**Output**:
+The data is never mutated, we just create new values 
+
+> 1) {:author Rich Hickey, :title Clojure for the Brave & True, :pages 232}
+> 2) {:author Daniel Higginbotham, :title Clojure for the Brave & True, :pages 232}
+> 3) The CLOJURE FOR THE BRAVE & TRUE book has 232 pages
+
 ### Terraform
 - Deploy new servers instead of updating current ones
 ```terraform
@@ -112,6 +124,7 @@ resource "aws_instance" "george_server" {
   instance_type = "t2.micro"
 }
 ```
+**A completely new server**
 
 ```terraform
 resource "aws_instance" "george_server" {
