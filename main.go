@@ -15,8 +15,8 @@ type Book struct {
 
 func (book Book) GetPagesWithCode() string {
 	var n = rand.Intn(200)
-	pages := book.Pages - n
-	return "The " + strings.ToUpper(book.Title) + " book has " + strconv.Itoa(pages) + " pages"
+	book.Pages -= n
+	return "The " + strings.ToUpper(book.Title) + " book has " + strconv.Itoa(book.Pages) + " pages"
 }
 
 func main() {
